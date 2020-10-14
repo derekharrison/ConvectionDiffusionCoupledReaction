@@ -18,13 +18,13 @@
 double ra(double Ca, double Cb) {
     /* Reaction rate law component a */
     double k = 1.0;
-    return -k * Ca*Cb;
+    return -k * Ca*Cb*Ca;
 }
 
 double rb(double Ca, double Cb) {
     /* Reaction rate law component b */
     double k = 1.0;
-    return -k * 2 *Ca*Cb;
+    return -k * 2 *Ca*Cb*Ca;
 }
 
 int main(int argc, char* argv[]) {
