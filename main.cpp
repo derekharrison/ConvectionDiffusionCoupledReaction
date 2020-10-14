@@ -5,7 +5,8 @@
  *      Author: d-w-h
  *
  *      This code solves the advection diffusion equation:
- *      Da/U*d2Ca/dz2 - dCa/dz + ra/U = 0
+ *      D/U*d2Ca/dz2 - dCa/dz + ra/U = 0
+ *      D/U*d2Cb/dz2 - dCb/dz + rb/U = 0
  *      Using the Gauss-Seidel iteration method.
  */
 
