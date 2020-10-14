@@ -48,9 +48,9 @@ int main(int argc, char* argv[]) {
     solver(physical_parameters, grid_parameters, &solver_data);
 
     /* Print data */
-//    for(int i = 0; i < grid_parameters.num_nodes; ++i) {
-//        printf("i: %i, z: %f, Ca: %f, Cb: %f\n", i, solver_data.z_c[i], solver_data.Ca[i], solver_data.Cb[i]);
-//    }
+    for(int i = 0; i < grid_parameters.num_nodes; ++i) {
+        printf("i: %i, z: %f, Ca: %f, Cb: %f\n", i, solver_data.z_c[i], solver_data.Ca[i], solver_data.Cb[i]);
+    }
 
     /* Deallocate data */
     delete [] solver_data.Ca;

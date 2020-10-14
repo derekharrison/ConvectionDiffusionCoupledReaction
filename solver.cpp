@@ -119,27 +119,6 @@ void solver(p_params physical_parameters, g_params grid_parameters, s_data* solv
         ++outer_it;
     }
 
-    double error = 0.0;
-    error = error + fabs(1 - (-Da*(solver_data->Ca[0] - Cain)/(0.5*del_z) + Da*(solver_data->Ca[1] - solver_data->Ca[0])/del_z + U*Cain - U*solver_data->Ca[0]) / (-ra(solver_data->Ca[0], solver_data->Cb[0])*del_z));
-
-    printf("i: %i, error Ca: %E, error Cb: %E\n", 0, (-Da*(solver_data->Ca[0] - Cain)/(0.5*del_z) + Da*(solver_data->Ca[1] - solver_data->Ca[0])/del_z + U*Cain - U*solver_data->Ca[0]) / (-ra(solver_data->Ca[0], solver_data->Cb[0])*del_z),
-                                                     (-Da*(solver_data->Cb[0] - Cbin)/(0.5*del_z) + Da*(solver_data->Cb[1] - solver_data->Cb[0])/del_z + U*Cbin - U*solver_data->Cb[0]) / (-rb(solver_data->Ca[0], solver_data->Cb[0])*del_z));
-    for(i = 1; i < num_nodes - 1; ++i) {
-        printf("i: %i, error Ca: %E, error Cb: %E\n", i, (-Da*(solver_data->Ca[i] - solver_data->Ca[i-1])/del_z + Da*(solver_data->Ca[i+1] - solver_data->Ca[i])/del_z + U*solver_data->Ca[i-1] - U*solver_data->Ca[i]) / (-ra(solver_data->Ca[i], solver_data->Cb[i])*del_z),
-                                                         (-Da*(solver_data->Cb[i] - solver_data->Cb[i-1])/del_z + Da*(solver_data->Cb[i+1] - solver_data->Cb[i])/del_z + U*solver_data->Cb[i-1] - U*solver_data->Cb[i]) / (-rb(solver_data->Ca[i], solver_data->Cb[i])*del_z));
-
-        error = error + fabs(1 - (-Da*(solver_data->Ca[i] - solver_data->Ca[i-1])/del_z + Da*(solver_data->Ca[i+1] - solver_data->Ca[i])/del_z + U*solver_data->Ca[i-1] - U*solver_data->Ca[i]) / (-ra(solver_data->Ca[i], solver_data->Cb[i])*del_z));
-
-    }
-
-    printf("i: %i, error Ca: %E, error Cb: %E\n", num_nodes-1, (-Da*(solver_data->Ca[num_nodes-1] - solver_data->Ca[num_nodes-2])/(del_z) + U*solver_data->Ca[num_nodes-2] - U*solver_data->Ca[num_nodes-1]) / (-ra(solver_data->Ca[num_nodes-1], solver_data->Cb[num_nodes-1])*del_z),
-                                                               (-Da*(solver_data->Cb[num_nodes-1] - solver_data->Cb[num_nodes-2])/(del_z) + U*solver_data->Cb[num_nodes-2] - U*solver_data->Cb[num_nodes-1]) / (-rb(solver_data->Ca[num_nodes-1], solver_data->Cb[num_nodes-1])*del_z));
-
-    error = error + (1.0 - (-Da*(solver_data->Ca[num_nodes-1] - solver_data->Ca[num_nodes-2])/(del_z) + U*solver_data->Ca[num_nodes-2] - U*solver_data->Ca[num_nodes-1]) / (-ra(solver_data->Ca[num_nodes-1], solver_data->Cb[num_nodes-1])*del_z));
-
-    error = error / num_nodes;
-    printf("error: %E\n", error);
-
     delete [] Ca_prev_it;
     delete [] Cb_prev_it;
 }
